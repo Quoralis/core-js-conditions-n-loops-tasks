@@ -119,8 +119,14 @@ function isIsoscelesTriangle(a, b, c) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  const ten = ['', 'X', 'XX', 'XXX'];
+  const one = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+
+  const first = Math.floor(num / 10);
+  const second = Math.floor(num % 10);
+
+  return ten[first] + one[second];
 }
 
 /**
@@ -138,8 +144,59 @@ function convertToRomanNumerals(/* num */) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  let numbersInWords = '';
+  for (let i = 0; i < numberStr.length; i += 1) {
+    switch (numberStr[i]) {
+      case '0':
+        numbersInWords += 'zero ';
+        break;
+      case '1':
+        numbersInWords += 'one ';
+        break;
+      case '2':
+        numbersInWords += 'two ';
+        break;
+      case '3':
+        numbersInWords += 'three ';
+        break;
+      case '4':
+        numbersInWords += 'four ';
+        break;
+      case '5':
+        numbersInWords += 'five ';
+        break;
+      case '6':
+        numbersInWords += 'six ';
+        break;
+      case '7':
+        numbersInWords += 'seven ';
+        break;
+      case '8':
+        numbersInWords += 'eight ';
+        break;
+      case '9':
+        numbersInWords += 'nine ';
+        break;
+      case '-':
+        numbersInWords += 'minus ';
+        break;
+      case '.':
+        numbersInWords += 'point ';
+        break;
+      case ',':
+        numbersInWords += 'point ';
+        break;
+      default:
+        numbersInWords += '';
+        break;
+    }
+  }
+  let newStr = '';
+  for (let i = 0; i < numbersInWords.length - 1; i += 1) {
+    newStr += numbersInWords[i];
+  }
+  return newStr;
 }
 
 /**
@@ -154,8 +211,11 @@ function convertNumberToString(/* numberStr */) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  for (let i = 0; i < Math.trunc(str.length / 2); i += 1) {
+    if (str[i] !== str[str.length - 1 - i]) return false;
+  }
+  return true;
 }
 
 /**
